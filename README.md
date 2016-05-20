@@ -328,7 +328,7 @@ sassaby.imports('variables');
 #### doesNotImport
 Assert that the file does not import the given path.
 ```js
-sassaby.imports('nope');
+sassaby.doesNotImport('nope');
 ```
 
 ## Contributing
