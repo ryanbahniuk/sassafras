@@ -283,6 +283,19 @@ Assert that the mixin makes a declaration of the given rule-property pair.
 sassaby.includedMixin('appearance').calledWithArgs('button').declares('-webkit-appearance', 'button');
 ```
 
+#### declaresProperties
+Assert that the mixin makes a declaration of the given property with fallback values.
+E.g. for the mixin: 
+```
+@mixin font-size($font-size: 1.6) {
+    font-size: $font-size * 16 + px;
+    font-size: $font-size + rem;
+}
+```
+```js
+sassaby.includedMixin('font-size').calledWithArgs('2').declaresProperties('max-height', ['32px', '2rem']);
+```
+
 #### declaresInSelector
 Assert that the mixin makes a declaration of the given rule-property pair inside the provided selector.
 E.g. for the mixin: 
@@ -299,10 +312,11 @@ E.g. for the mixin:
 }
 ```
 ```js
-sassaby.includedMixin('appearance').calledWithArgs('button').declaresInSelector(':before', 'display', 'table');
-sassaby.includedMixin('appearance').calledWithArgs('button').declaresInSelector(':before', 'display', 'table');;
-sassaby.includedMixin('appearance').calledWithArgs('button').declaresInSelector(':before', 'display', 'table');;
-sassaby.includedMixin('appearance').calledWithArgs('button').declaresInSelector(':before', 'display', 'table');;
+sassaby.includedMixin('clearfix').called().declaresInSelector(':before', 'content', " ");
+sassaby.includedMixin('clearfix').called().declaresInSelector(':before', 'display', 'table');
+sassaby.includedMixin('clearfix').called().declaresInSelector(':after', 'content', " ");
+sassaby.includedMixin('clearfix').called().declaresInSelector(':after', 'display', 'table');
+sassaby.includedMixin('clearfix').called().declaresInSelector(':after', 'clear', 'both');
 ```
 
 #### doesNotDeclare
