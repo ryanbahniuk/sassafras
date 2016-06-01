@@ -123,6 +123,23 @@ MixinResult.prototype = {
     assert.equal(declarationValue, value.toString(), message);
   },
 
+  declaresProperties: function(property, value) {
+    var declarations = parsers.findDeclarations(this.ast, property);
+    var declarationValues = [];
+    declarations.forEach(function(declaration){
+      declarationValues.push(declaration.value);
+    });
+    var message = 'Value: ' + declarationValues + ' does not equal value: ' + value + '.';
+    assert.equal(declarationValues.toString(), value.toString(), message);
+  },
+  
+  declaresInSelector: function(selector, property, value) {
+    var declaration = parsers.findDeclarationInSelector(this.ast, selector, property);
+    var declarationValue = declaration ? utilities.scrubQuotes(declaration.value) : '';
+    var message = 'In Selector:'+ selector + ' the value: ' + declarationValue + ' does not equal value: ' + value + '.';
+    assert.equal(declarationValue, value.toString(), message);
+  },
+
   doesNotDeclare: function(property, value) {
     var declaration = parsers.findDeclaration(this.ast, property);
     var declarationValue = declaration ? utilities.scrubQuotes(declaration.value) : '';
