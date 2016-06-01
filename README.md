@@ -283,6 +283,28 @@ Assert that the mixin makes a declaration of the given rule-property pair.
 sassaby.includedMixin('appearance').calledWithArgs('button').declares('-webkit-appearance', 'button');
 ```
 
+#### declaresInSelector
+Assert that the mixin makes a declaration of the given rule-property pair inside the provided selector.
+E.g. for the mixin: 
+```
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+```
+```js
+sassaby.includedMixin('appearance').calledWithArgs('button').declaresInSelector(':before', 'display', 'table');
+sassaby.includedMixin('appearance').calledWithArgs('button').declaresInSelector(':before', 'display', 'table');;
+sassaby.includedMixin('appearance').calledWithArgs('button').declaresInSelector(':before', 'display', 'table');;
+sassaby.includedMixin('appearance').calledWithArgs('button').declaresInSelector(':before', 'display', 'table');;
+```
+
 #### doesNotDeclare
 Assert that the mixin does not make a declaration of the given rule-property pair.
 ```js
