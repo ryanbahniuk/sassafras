@@ -1,0 +1,12 @@
+@media screen and (min-width: 600px) {
+  body {
+    background: green;
+    font-size: 21px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  body {
+    background: blue;
+  }
+}
