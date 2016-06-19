@@ -65,6 +65,35 @@
             "column": 2
           }
         }
+      },
+      {
+        "type": "media",
+        "media": "screen and (min-width: 900px)",
+        "rules": [
+          {
+            "type": "rule",
+            "selectors": [
+              "body"
+            ],
+            "declarations": [
+              {
+                "type": "declaration",
+                "property": "background",
+                "value": "blue",
+                "position": {
+                  "start": {
+                    "line": 9,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 22
+                  }
+                }
+              }
+            ]
+          }
+        ]
       }
     ],
     "parsingErrors": []
