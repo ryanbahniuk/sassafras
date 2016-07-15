@@ -159,6 +159,12 @@ describe('Parsers', function() {
       var media = parsers.findMedia(ast);
       assert.deepEqual(media, undefined);
     });
+
+    it('should find the specific media query passed in', function() {
+      var media = parsers.findMedia(astMediaQuery);
+      assert.equal(media.type, 'media');
+      assert.equal(media.media, 'screen and (min-width: 900px)');
+    });
   });
 
   describe('hasSelector', function() {

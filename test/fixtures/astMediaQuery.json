@@ -65,6 +65,55 @@
             "column": 2
           }
         }
+      },
+      {
+        "type": "media",
+        "media": "screen and (min-width: 900px)",
+        "rules": [
+          {
+            "type": "rule",
+            "selectors": [
+              "body"
+            ],
+            "declarations": [
+              {
+                "type": "declaration",
+                "property": "background",
+                "value": "blue",
+                "position": {
+                  "start": {
+                    "line": 10,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 10,
+                    "column": 21
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 9,
+                "column": 3
+              },
+              "end": {
+                "line": 11,
+                "column": 4
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 8,
+            "column": 1
+          },
+          "end": {
+            "line": 12,
+            "column": 2
+          }
+        }
       }
     ],
     "parsingErrors": []
