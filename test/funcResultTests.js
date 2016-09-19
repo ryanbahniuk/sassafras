@@ -12,13 +12,13 @@ describe('FuncResult', function() {
   var funcFalseResult;
   var mockUtilities;
   var args = [5];
-  var file = '@function test($input) { @return 2 * $input }';
+  var file = '@function test($input) { @return 2 * $input };.foo{display:"block";}';
   var call = 'test';
   var argString = '5';
   var result = '10';
-  var wrappedResult = '.test{content:' + result + '}';
-  var wrappedTrueResult = '.test{content:true}';
-  var wrappedFalseResult = '.test{content:false}';
+  var wrappedResult = '.foo{display:"block";}.test{content:' + result + '}';
+  var wrappedTrueResult = '.foo{display:"block";}.test{content:true}';
+  var wrappedFalseResult = '.foo{display:"block";}.test{content:false}';
 
   beforeEach(function() {
     FuncResult = proxyquire('../src/funcResult', {
