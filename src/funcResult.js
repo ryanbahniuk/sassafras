@@ -49,32 +49,32 @@ function FuncResult(file, call, args) {
 FuncResult.prototype = {
   equals: function(result) {
     var message = 'Function: ' + this.call + ' does not equal ' + result + '.';
-    assert.equal(this.css, wrapFunction(result), message);
+    assert(this.css.indexOf(wrapFunction(result)) > -1, message);
   },
 
   doesNotEqual: function(result) {
     var message = 'Function: ' + this.call + ' equals ' + result + '.';
-    assert.notEqual(this.css, wrapFunction(result), message);
+    assert(this.css.indexOf(wrapFunction(result)) === -1, message);
   },
 
   isTrue: function() {
     var message = 'Function does not equal true.';
-    assert.equal(this.css, wrapFunction(true), message);
+    assert(this.css.indexOf(wrapFunction(true)) > -1, message);
   },
 
   isFalse: function() {
     var message = 'Function does not equal false.';
-    assert.equal(this.css, wrapFunction(false), message);
+    assert(this.css.indexOf(wrapFunction(false)) > -1, message);
   },
 
   isTruthy: function() {
     var message = 'Function is not truthy.';
-    assert.equal(this.truthyCss, wrapFunction(true), message);
+    assert(this.truthyCss.indexOf(wrapFunction(true)) > -1, message);
   },
 
   isFalsy: function() {
     var message = 'Function is not falsy.';
-    assert.equal(this.truthyCss, wrapFunction(false), message);
+    assert(this.truthyCss.indexOf(wrapFunction(false)) > -1, message);
   }
 };
 
