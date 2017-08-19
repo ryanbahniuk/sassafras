@@ -17,7 +17,7 @@ function setVariables(varz) {
 function setDependencies(dependencies) {
   var sassImports = '';
   dependencies.forEach(function(fileName) {
-    sassImports = sassImports + "@import '" + fileName + "';";
+    sassImports = sassImports + fs.readFileSync(fileName).toString();
   });
   return sassImports;
 }
