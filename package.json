@@ -1,35 +1,35 @@
 {
-  "name": "sassaby",
-  "version": "2.1.1",
-  "description": "A unit testing library for SASS",
-  "keywords": [
-    "sass",
-    "scss",
-    "testing",
-    "unit testing",
-    "bdd",
-    "tdd",
-    "test"
-  ],
-  "author": "Ryan Bahniuk <ryan.bahniuk@gmail.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ryanbahniuk/sassaby"
-  },
-  "main": "src/sassaby",
-  "dependencies": {
-    "css": "^2.2.0",
-    "cssmin": "^0.4.3",
-    "mocha": "^2.2.5",
-    "node-sass": "^3.1.2",
-    "normalize-path": "^2.1.1"
-  },
-  "devDependencies": {
-    "proxyquire": "^1.5.0",
-    "sinon": "^1.14.1"
-  },
-  "scripts": {
-    "test": "SET NODE_ENV=test & mocha"
-  }
+    "name": "sassaby",
+    "version": "2.1.1",
+    "description": "A unit testing library for SASS",
+    "keywords": [
+        "sass",
+        "scss",
+        "testing",
+        "unit testing",
+        "bdd",
+        "tdd",
+        "test"
+    ],
+    "author": "Ryan Bahniuk <ryan.bahniuk@gmail.com>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ryanbahniuk/sassaby"
+    },
+    "main": "src/sassaby",
+    "dependencies": {
+        "css": "^2.2.0",
+        "cssmin": "^0.4.3",
+        "mocha": "^2.2.5",
+        "node-sass": "3.1.2",
+        "normalize-path": "^2.1.1"
+    },
+    "devDependencies": {
+        "proxyquire": "^1.5.0",
+        "sinon": "^1.14.1"
+    },
+    "scripts": {
+        "test": "SET NODE_ENV=test & mocha"
+    }
 }
