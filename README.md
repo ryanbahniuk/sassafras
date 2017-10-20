@@ -5,6 +5,52 @@ A Unit Testing Library for SASS
 
 Sassaby is a unit testing library for SASS mixins and functions. It is written in Node to provide a consistent interface with other front-end tests in your system and for easy integration into a build system. Its interface can be used with any Node testing library ([Mocha](https://www.npmjs.com/package/mocha "Mocha"), [Jasmine](https://www.npmjs.com/package/jasmine "Jasmine"), etc.).
 
+## Table of Contents
+- [Installation](#installation)
+- [Setup](#setup)
+- [Dependencies](#dependencies)
+- [Features](#features)
+  - [calledWithArgs](#calledwithargs)
+  - [called](#called)
+  - [calledWithBlock](#calledwithblock)
+  - [calledWithBlockAndArgs](#calledwithblockandargs)
+- [Rules](#rules)
+  - [Function Rules](#function-rules)
+    - [equals](#equals)
+    - [doesNotEqual](#doesnotequal)
+    - [isTrue](#istrue)
+    - [isFalse](#isfalse)
+    - [isTruthy](#istruthy)
+    - [isFalsy](#isfalsy)
+  - [Standalone Mixin Rules](#standalone-mixin-rules)
+    - [createsSelector](#createsselector)
+    - [doesNotCreateSelector](#doesnotcreateselector)
+    - [createsMediaQuery](#createsmediaquery)
+    - [doesNotCreateMediaQuery](#doesnotcreatemediaquery)
+    - [createsFontFace](#createsfontface)
+    - [doesNotCreateFontFace](#doesnotcreatefontface)
+    - [hasNumDeclarations](#hasnumdeclarations)
+    - [declares](#declares)
+    - [doesNotDeclare](#doesnotdeclare)
+    - [equals](#equals-1)
+    - [doesNotEqual](#doesnotequal-1)
+    - [calls](#calls)
+    - [doesNotCall](#doesnotcall)
+  - [Included Mixin Rules](#included-mixin-rules)
+    - [hasNumDeclarations](#hasnumdeclarations-1)
+    - [declares](#declares-1)
+    - [doesNotDeclare](#doesnotdeclare-1)
+    - [equals](#equals-2)
+    - [doesNotEqual](#doesnotequal-2)
+    - [calls](#calls-1)
+    - [doesNotCall](#doesnotcall-1)
+  - [Testing Imports](#testing-imports)
+    - [imports](#imports)
+    - [doesNotImport](#doesnotimport)
+- [Contributing](#contributing)
+- [License](#license)
+
+
 ## Installation
 
 Install via npm:
@@ -142,6 +188,8 @@ sassaby.standaloneMixin('align-right').calledWithBlock('.test { color: red; }', 
 sassaby.includedMixin('appearance').calledWithBlock('.test { color: red; }', true, 1)
 ```
 
+**[:arrow_up: back to top](#table-of-contents)**
+
 ## Rules
 
 Each of these types has their own set of functions, or rules, that assert certain conditions on the result of the function or mixin. The arguments of these rules are normalized to match the output from the SASS compilation, so it can be formatted however you wish as long as it is compilable SASS.
@@ -185,6 +233,7 @@ Assert that the function output is a falsy value in SASS. Keep in mind that this
 sassaby.func('returns-falsy').calledWithArgs(null).isFalsy();
 ```
 
+**[:arrow_up: back to top](#table-of-contents)**
 
 ### Standalone Mixin Rules
 
@@ -267,6 +316,7 @@ Assert that the mixin does not call another mixin.
 sassaby.standaloneMixin('build-alignments').calledWithArgs('md').doesNotCall('align-right(lg)');
 ```
 
+**[:arrow_up: back to top](#table-of-contents)**
 
 ### Included Mixin Rules
 
@@ -349,6 +399,7 @@ Assert that the mixin does not call another mixin.
 sassaby.includedMixin('appearance').calledWithArgs('button').doesNotCall('prefixer(-webkit-button)');
 ```
 
+**[:arrow_up: back to top](#table-of-contents)**
 
 ### Testing Imports
 
@@ -364,7 +415,7 @@ sassaby.imports('variables');
 #### doesNotImport
 Assert that the file does not import the given path.
 ```js
-sassaby.imports('nope');
+sassaby.doesNotImport('nope');
 ```
 
 ## Contributing
@@ -378,3 +429,5 @@ MIT © Ryan Bahniuk
 
 [ci]:      https://travis-ci.org/ryanbahniuk/sassaby
 [npm]:     https://www.npmjs.com/package/sassaby
+
+**[:arrow_up: back to top](#table-of-contents)**
