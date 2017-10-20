@@ -23,6 +23,7 @@
         "cssmin": "^0.4.3",
         "mocha": "^2.2.5",
         "node-sass": "2.0.1",
+        "request": "2.81.0",
         "normalize-path": "^2.1.1"
     },
     "devDependencies": {
