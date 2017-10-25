@@ -83,18 +83,23 @@ var Parsers = {
   },
 
   findDeclarations: function(ast, property) {
-    var found;
+    var found = [];
     ast.stylesheet.rules.forEach(function(rule) {
       if (rule.type === 'media') {
         rule.rules.forEach(function(rule) {
-          found = found || findDeclarationsProperties(rule, property);
+          found.push(findDeclarationsProperties(rule, property));         
         });
       } else {
-        found = found || findDeclarationsProperties(rule, property);
+        found.push(findDeclarationsProperties(rule, property));
       }
     });
-   
-    return found;
+    var declarationsArray;
+    found.forEach(function(value) {
+      if(value.length !== 0) {
+        declarationsArray = value;
+      }
+    })
+    return declarationsArray;
   },
 
   findDeclarationInSelector: function(ast, selector, property) {
@@ -107,11 +112,12 @@ var Parsers = {
     }
     ast.stylesheet.rules.forEach(function(rule) {
       for(var i = 0; i < rule.selectors.length; i++) {
-          if(rule.selectors[i].indexOf(selector) >= 0 ) {
-             found = found || findDeclarationProperty(rule, property);
+        if(rule.selectors[i].indexOf(selector) >= 0 ) {
+          found = found || findDeclarationProperty(rule, property);
         }
       }
     });
+    console.log(found);
     return found;
   },
 

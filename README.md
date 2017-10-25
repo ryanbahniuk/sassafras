@@ -343,7 +343,7 @@ E.g. for the mixin:
 }
 ```
 ```js
-sassaby.includedMixin('font-size').calledWithArgs('2').declaresProperties('max-height', ['32px', '2rem']);
+sassaby.includedMixin('font-size').calledWithArgs('2').declares('max-height', ['32px', '2rem']);
 ```
 
 #### declaresInSelector

@@ -218,4 +218,23 @@ describe('sample.scss', function() {
       mixin.called().calls('create-header');
     });
   });
+  describe('fallback-font-size', function() {
+    beforeEach(function() {
+      mixin = sassaby.includedMixin('fallback-font-size');
+    });
+
+    it('should have the correct color declaration', function() {
+      mixin.called().declares('font-size', ['16px', '1rem']);
+    });
+  });
+
+  describe('hover-link', function() {
+    beforeEach(function() {
+      mixin = sassaby.includedMixin('hover-link');
+    });
+
+    it('should have the correct color declaration', function() {
+      mixin.called().declaresInSelector('&:hover', 'text-transform', 'none');
+    });
+  })
 });
