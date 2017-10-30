@@ -94,3 +94,13 @@
   }
 }
 
+@mixin fallback-font-size {
+  font-size: 16px;
+  font-size: 1rem;
+}
+
+@mixin hover-link {
+  &:hover {
+    text-transform: none;
+  }
+}

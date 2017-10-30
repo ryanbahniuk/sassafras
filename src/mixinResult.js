@@ -117,9 +117,25 @@ MixinResult.prototype = {
   },
 
   declares: function(property, value) {
-    var declaration = parsers.findDeclaration(this.ast, property);
-    var declarationValue = declaration ? utilities.scrubQuotes(declaration.value) : '';
+    var declaration, declarationValue;
+    if (Array.isArray(value) && value.length > 1) {
+      declaration = parsers.findDeclarations(this.ast, property);
+      declarationValue = [];
+      declaration.forEach(function(declaration){
+        declarationValue.push(declaration.value);
+      });
+    } else {
+      declaration = parsers.findDeclaration(this.ast, property);
+      declarationValue = declaration ? utilities.scrubQuotes(declaration.value) : '';
+    }
     var message = 'Value: ' + declarationValue + ' does not equal value: ' + value + '.';
+    assert.equal(declarationValue.toString(), value.toString(), message);
+  },
+  
+  declaresInSelector: function(selector, property, value) {
+    var declaration = parsers.findDeclarationInSelector(this.ast, selector, property);
+    var declarationValue = declaration ? utilities.scrubQuotes(declaration.value) : '';
+    var message = 'In Selector:'+ selector + ' the value: ' + declarationValue + ' does not equal value: ' + value + '.';
     assert.equal(declarationValue, value.toString(), message);
   },
 

@@ -23,7 +23,6 @@ function hasSelectorValue(rule, selectorValue) {
 
 function findDeclarationProperty(rule, declarationProperty) {
   var foundDeclaration;
-
   if (rule.declarations) {
     rule.declarations.forEach(function(declaration) {
       if (declaration.property === declarationProperty) {
@@ -31,8 +30,19 @@ function findDeclarationProperty(rule, declarationProperty) {
       }
     });
   }
-
   return foundDeclaration;
+}
+
+function findDeclarationsProperties(rule, declarationProperty) {
+  var foundDeclarations = [];
+  if (rule.declarations) {
+    rule.declarations.forEach(function(declaration) {
+      if (declaration.property === declarationProperty) {
+        foundDeclarations.push(declaration);
+      }
+    });
+  }
+  return foundDeclarations;
 }
 
 function isFontFace(rule) {
@@ -57,10 +67,8 @@ var Parsers = {
     });
     return count;
   },
-
   findDeclaration: function(ast, property) {
     var found;
-
     ast.stylesheet.rules.forEach(function(rule) {
       if (rule.type === 'media') {
         rule.rules.forEach(function(rule) {
@@ -71,6 +79,45 @@ var Parsers = {
       }
     });
 
+    return found;
+  },
+
+  findDeclarations: function(ast, property) {
+    var found = [];
+    ast.stylesheet.rules.forEach(function(rule) {
+      if (rule.type === 'media') {
+        rule.rules.forEach(function(rule) {
+          found.push(findDeclarationsProperties(rule, property));         
+        });
+      } else {
+        found.push(findDeclarationsProperties(rule, property));
+      }
+    });
+    var declarationsArray;
+    found.forEach(function(value) {
+      if(value.length !== 0) {
+        declarationsArray = value;
+      }
+    })
+    return declarationsArray;
+  },
+
+  findDeclarationInSelector: function(ast, selector, property) {
+    var found;
+    if (selector.indexOf("&") > -1) {
+       selector = selector.replace("&", ".test");
+    }
+    if (selector.indexOf("@at-root") > -1) {
+      selector = selector.replace("@at-root ", "");
+    }
+    ast.stylesheet.rules.forEach(function(rule) {
+      for(var i = 0; i < rule.selectors.length; i++) {
+        if(rule.selectors[i].indexOf(selector) >= 0 ) {
+          found = found || findDeclarationProperty(rule, property);
+        }
+      }
+    });
+    console.log(found);
     return found;
   },
 

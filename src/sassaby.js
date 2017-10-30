@@ -5,6 +5,7 @@ var assert = require('assert');
 var Mixin = require('./types/mixin');
 var Func = require('./types/func');
 var parsers = require('./parsers');
+var normalize = require('normalize-path');
 
 function setVariables(varz) {
   var sassVariables = '';
@@ -17,7 +18,7 @@ function setVariables(varz) {
 function setDependencies(dependencies) {
   var sassImports = '';
   dependencies.forEach(function(fileName) {
-    sassImports = sassImports + "@import '" + fileName + "';";
+    sassImports = sassImports + "@import '" + normalize(fileName) + "';";
   });
   return sassImports;
 }
@@ -25,7 +26,7 @@ function setDependencies(dependencies) {
 function Sassaby(path, options) {
   options = options || {};
   this.path = path;
-  this.file = fs.readFileSync(path).toString();
+  this.file = fs.readFileSync(normalize(path), 'utf-8').toString();
   this.variables = '';
   this.dependencies = '';
 
