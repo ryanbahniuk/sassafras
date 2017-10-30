@@ -328,13 +328,13 @@ sassaby.includedMixin('appearance').calledWithArgs('button').hasNumDeclarations(
 ```
 
 #### declares
-Assert that the mixin makes a declaration of the given rule-property pair.
+Can be either called with a string as property value or with an Array object.
+
+Called with a String it asserts that the mixin makes a declaration of the given rule-property pair.
 ```js
 sassaby.includedMixin('appearance').calledWithArgs('button').declares('-webkit-appearance', 'button');
 ```
-
-#### declaresProperties
-Assert that the mixin makes a declaration of the given property with fallback values.
+Called with an Object it asserts that the mixin makes a declaration of the given property with the provided fallback values.
 E.g. for the mixin: 
 ```
 @mixin font-size($font-size: 1.6) {
