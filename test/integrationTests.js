@@ -153,7 +153,7 @@ describe('sample.scss', function() {
     });
 
     it('should call the correct mixin', function() {
-      compiled.calls('appearance(none)');
+      compiled.calls('appearance(none)', 'included');
     });
   });
 
