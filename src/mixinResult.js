@@ -142,8 +142,8 @@ MixinResult.prototype = {
     assert.notEqual(this.css, wrappedOutput, message);
   },
 
-  calls: function(mixin) {
-    var mixinCss = utilities.createCss(this.file, wrapMixin(this.type, mixin));
+  calls: function(mixin, type) {
+    var mixinCss = utilities.createCss(this.file, wrapMixin(type || this.type, mixin));
     var message = 'Could not find the output from ' + mixin + ' in mixin.';
     assert(this.css.indexOf(unwrapOutput(this.type, mixinCss)) > -1, message);
   },
