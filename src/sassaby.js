@@ -17,9 +17,14 @@ function setVariables(varz) {
 function setDependencies(dependencies) {
   var sassImports = '';
   dependencies.forEach(function(fileName) {
+    fileName = formatPath(fileName);
     sassImports = sassImports + "@import '" + fileName + "';";
   });
   return sassImports;
+}
+
+function formatPath(path) {
+  return path.replace(/\\/g, '/');
 }
 
 function Sassaby(path, options) {

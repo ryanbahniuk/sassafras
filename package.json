@@ -17,10 +17,12 @@
     "node-sass": "^3.1.2"
   },
   "devDependencies": {
+    "node-sass": "^4.12.0",
     "proxyquire": "^1.5.0",
     "sinon": "^1.14.1"
   },
   "scripts": {
-    "test": "NODE_ENV=test mocha"
+    "test": "NODE_ENV=test mocha",
+    "testWindow": "set NODE_ENV=test&& mocha"
   }
 }
